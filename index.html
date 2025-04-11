@@ -1,110 +1,124 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Housewarming Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #fefefe;
-      color: #333;
       margin: 0;
-      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      min-height: 100vh;
     }
 
     header {
-      background: #ffb347;
-      color: white;
-      padding: 30px;
       text-align: center;
+      padding: 40px 20px;
     }
 
     header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
       margin: 0;
-      font-size: 2.5em;
+      color: #ffeaa7;
+    }
+
+    header p {
+      font-size: 1.3em;
+      color: #fceae8;
     }
 
     section {
-      padding: 30px;
       max-width: 800px;
       margin: auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 30px;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
 
-    .details {
-      background: #fff8dc;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-    }
-
-    .timings ul {
-      list-style: none;
-      padding-left: 0;
+    h2 {
+      color: #fffae6;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #fff3;
+      padding-bottom: 5px;
     }
 
     .timings li {
-      background: #ffe4b5;
-      padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 10px;
+      margin: 8px 0;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      list-style: none;
     }
 
     iframe {
       width: 100%;
       height: 300px;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
+      margin-top: 15px;
     }
 
     .footer {
       text-align: center;
-      padding: 20px;
-      background: #f0f0f0;
       font-size: 0.9em;
-      color: #666;
+      margin-top: 30px;
+      color: #ffcccc;
+    }
+
+    .banner-img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
+  <div class="overlay">
+    <header>
+      <h1>You're Invited!</h1>
+      <p>To our Housewarming Ceremony</p>
+      <img class="banner-img" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80" alt="Housewarming">
+    </header>
 
-  <header>
-    <h1>You're Invited!</h1>
-    <p>Join us for our Housewarming Ceremony</p>
-  </header>
+    <section>
+      <h2>📍 Venue</h2>
+      <p><strong>Our New Home</strong><br>Exact location shown below</p>
 
-  <section class="details">
-    <h2>📍 Venue</h2>
-    <p>Our New Home: <br><strong>123 Blissful Street, Happy Town, State - ZIP</strong></p>
+      <h2>🗓️ Date</h2>
+      <p style="font-size: 1.5em;"><strong>Wednesday, April 30, 2025</strong></p>
 
-    <h2>🗓️ Date</h2>
-    <p><strong>Sunday, May 5, 2025</strong></p>
-
-    <div class="timings">
       <h2>⏰ Timings</h2>
-      <ul>
-        <li>10:00 AM – 11:00 AM: Pooja</li>
-        <li>11:00 AM – 12:00 PM: House Tour</li>
-        <li>12:00 PM – 2:00 PM: Lunch & Get-together</li>
+      <ul class="timings">
+        <li><strong>7:00 AM – 8:00 AM</strong>: Ganapathi Homam</li>
+        <li><strong>8:00 AM – 9:00 AM</strong>: Gruhapravesam Pooja</li>
+        <li><strong>9:00 AM – 11:00 AM</strong>: House Tour & Blessings</li>
+        <li><strong>12:00 PM onwards</strong>: Lunch & Get-together</li>
       </ul>
+
+      <h2>🗺️ Location Map</h2>
+      <!-- Embed version of your actual Google Maps short link -->
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.0552309875654!2d78.413742!3d17.439929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDI2JzIzLjgiTiA3OMKwMjUnMTAuNSJF!5e0!3m2!1sen!2sin!4v1712831011111" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <div class="footer">
+      With love,<br><strong>Your Name & Family</strong><br>
+      We can't wait to celebrate this special day with you! 🏡🎉
     </div>
-
-    <h2>🗺️ Location Map</h2>
-    <!-- Replace with your actual location link -->
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019151926956!2d144.96332!3d-37.814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f02fcdf3%3A0xf577fc9d3f92a1b6!2sFederation%20Square!5e0!3m2!1sen!2sus!4v1680783914527"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </section>
-
-  <div class="footer">
-    With love, <br><strong>Your Name & Family</strong><br>
-    We can't wait to celebrate with you! 🎉
   </div>
-
 </body>
 </html>
