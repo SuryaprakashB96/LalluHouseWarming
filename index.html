@@ -13,39 +13,64 @@
       background-size: cover;
       color: #fff;
       text-shadow: 1px 1px 3px #000;
+      overflow-x: hidden;
     }
 
     .overlay {
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.65);
       padding: 20px;
       min-height: 100vh;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     header {
       text-align: center;
       padding: 40px 20px;
+      animation: fadeIn 1.5s ease-in-out;
     }
 
     header h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 3em;
+      font-size: 3.5em;
       margin: 0;
       color: #ffeaa7;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #ffeaa7, 0 0 10px #ffc; }
+      to { text-shadow: 0 0 15px #fff, 0 0 25px #fceae8; }
     }
 
     header p {
-      font-size: 1.3em;
+      font-size: 1.5em;
       color: #fceae8;
+    }
+
+    .banner-img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-top: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
     }
 
     section {
       max-width: 800px;
       margin: auto;
-      background: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 16px;
       padding: 30px;
-      margin-top: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      margin-top: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      animation: fadeIn 2s ease-in-out;
     }
 
     h2 {
@@ -55,12 +80,30 @@
       padding-bottom: 5px;
     }
 
+    p, li {
+      font-size: 1.2em;
+    }
+
     .timings li {
-      margin: 8px 0;
-      padding: 8px 12px;
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 10px;
+      margin: 10px 0;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
       list-style: none;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .timings li:hover {
+      background: rgba(255, 255, 255, 0.6);
+      transform: scale(1.03);
+    }
+
+    .highlight {
+      background: #ffeaa7 !important;
+      color: #000;
+      font-weight: bold;
+      box-shadow: 0 0 12px #ffeaa7;
     }
 
     iframe {
@@ -73,17 +116,10 @@
 
     .footer {
       text-align: center;
-      font-size: 0.9em;
-      margin-top: 30px;
+      font-size: 1em;
+      margin-top: 40px;
       color: #ffcccc;
-    }
-
-    .banner-img {
-      width: 100%;
-      max-height: 250px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-top: 10px;
+      animation: fadeIn 3s ease-in-out;
     }
   </style>
 </head>
@@ -100,18 +136,18 @@
       <p><strong>Our New Home</strong><br>Exact location shown below</p>
 
       <h2>🗓️ Date</h2>
-      <p style="font-size: 1.5em;"><strong>Wednesday, April 30, 2025</strong></p>
+      <p id="dateHighlight" style="font-size: 1.6em; font-weight: bold;">
+        <strong>Wednesday, April 30, 2025</strong>
+      </p>
 
       <h2>⏰ Timings</h2>
-      <ul class="timings">
-        <li><strong>7:00 AM – 8:00 AM</strong>: Ganapathi Homam</li>
-        <li><strong>8:00 AM – 9:00 AM</strong>: Gruhapravesam Pooja</li>
-        <li><strong>9:00 AM – 11:00 AM</strong>: House Tour & Blessings</li>
-        <li><strong>12:00 PM onwards</strong>: Lunch & Get-together</li>
+      <ul class="timings" id="timingList">
+        <li data-time="05:00">5:00 AM – 6:30 AM: Gruhapravesam Pooja</li>
+        <li data-time="09:00">9:00 AM – 11:30 AM: Satyanarayana Pooja</li>
+        <li data-time="12:00">12:00 PM onwards: Lunch & Get-together</li>
       </ul>
 
       <h2>🗺️ Location Map</h2>
-      <!-- Embed version of your actual Google Maps short link -->
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.0552309875654!2d78.413742!3d17.439929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDI2JzIzLjgiTiA3OMKwMjUnMTAuNSJF!5e0!3m2!1sen!2sin!4v1712831011111" allowfullscreen="" loading="lazy"></iframe>
     </section>
 
@@ -120,5 +156,30 @@
       We can't wait to celebrate this special day with you! 🏡🎉
     </div>
   </div>
+
+  <script>
+    // JavaScript to highlight the next upcoming timing
+    function highlightNextEvent() {
+      const now = new Date();
+      const currentHour = now.getHours();
+      const currentMin = now.getMinutes();
+      const currentTime = currentHour * 60 + currentMin;
+
+      const timings = document.querySelectorAll('.timings li');
+
+      for (let li of timings) {
+        const timeStr = li.getAttribute('data-time');
+        const [hr, min] = timeStr.split(':').map(Number);
+        const eventTime = hr * 60 + min;
+
+        if (eventTime >= currentTime) {
+          li.classList.add('highlight');
+          break;
+        }
+      }
+    }
+
+    window.onload = highlightNextEvent;
+  </script>
 </body>
 </html>
